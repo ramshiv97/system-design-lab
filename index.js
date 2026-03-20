@@ -11,7 +11,8 @@ app.listen(3000, () => {
 });
 
 app.get('/hello', (req, res) => {
-    res.send('Hello, World!');
+    const name = req.query.name || 'Guest';
+    res.send(`Hello ${name}`);
 }); 
 
 app.get('/goodbye', (req, res) => {
