@@ -9,3 +9,11 @@ app.get('/ping', (req, res) => {
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
+
+app.get('/hello', (req, res) => {
+    res.send('Hello, World!');
+}); 
+
+app.get('/goodbye', (req, res) => {
+    res.send('Goodbye, World!');
+}); 
