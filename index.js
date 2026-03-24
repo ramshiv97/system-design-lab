@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 
-
+const users = [];
 app.get('/ping', (req, res) => {
     res.send('server running');
 });
@@ -18,3 +19,24 @@ app.get('/hello', (req, res) => {
 app.get('/goodbye', (req, res) => {
     res.send('Goodbye, World!');
 }); 
+
+app.post('/greet', (req, res) => {
+  const name = req.body.name || 'Guest';
+  res.send(`Hello ${name}`);
+});
+
+
+app.post('/users', (req, res) => {
+  const user = {
+    id: users.length + 1,
+    name: req.body.name
+  };
+
+  users.push(user);
+
+  res.json(user);
+});
+
+app.get('/users', (req, res) => {
+  res.json(users);
+});
