@@ -37,6 +37,9 @@ app.post('/users', (req, res) => {
   res.json(user);
 });
 
+
+
 app.get('/users', (req, res) => {
-  res.json(users);
+  const limit = parseInt(req.query.limit) || users.length;
+  res.json(users.slice(0, limit));
 });
