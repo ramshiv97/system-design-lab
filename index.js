@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+const usersRoutes = require('./usersRoutes');
+app.use(usersRoutes);
 
-const users = [];
+
 app.get('/ping', (req, res) => {
     res.send('server running');
 });
@@ -26,20 +28,5 @@ app.post('/greet', (req, res) => {
 });
 
 
-app.post('/users', (req, res) => {
-  const user = {
-    id: users.length + 1,
-    name: req.body.name
-  };
 
-  users.push(user);
-
-  res.json(user);
-});
-
-
-
-app.get('/users', (req, res) => {
-  const limit = parseInt(req.query.limit) || users.length;
-  res.json(users.slice(0, limit));
-});
+app.use(usersRoutes);
