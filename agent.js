@@ -1,12 +1,12 @@
 const axios = require("axios");
 
-async function createUser() {
+async function createUser(name, email) {
   const response = await axios.post("http://localhost:3000/users", {
-    name: "AgentUser",
-    email: "agent@test.com"
+    name,
+    email
   });
 
   console.log(response.data);
 }
 
-createUser();
+createUser("ShivramAgent", "shivramagent@test.com");
